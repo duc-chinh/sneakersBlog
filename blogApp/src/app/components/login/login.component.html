@@ -1,0 +1,13 @@
+<form class="form-signin">
+    <!-- img class="images" src="../../../images/login-avatar.png" alt="login-avatar.png" width="72" height="72" -->
+    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+    <label for="login" class="sr-only">Nom d'utilisateur</label>
+    <input type="text" id="login" class="form-control" placeholder="Nom d'utilisateur" required [(ngModel)]="login" name="login" />
+    <br />
+    <label for="password" class="sr-only">Mot de passe</label>
+    <input type="password" id="password" class="form-control" placeholder="Mot de passe" required [(ngModel)]="password" name="password" />
+    <br />
+    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="submit()">Connexion</button>
+    <button class="btn btn-link btn-block" routerLink="/register" routerLinkActive="active-link">Pas encore inscrit?</button>
+    <br /><br /><br />
+</form>

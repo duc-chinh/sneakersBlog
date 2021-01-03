@@ -1,0 +1,29 @@
+<div class="submit-form">
+    <h1>Rédaction d'un article</h1>
+    <div *ngIf="!submitted">
+        <form>
+            <div class="mb-3">
+                <label for="title">Titre de l'article</label>
+                <input type="text" class="form-control" id="title" required [(ngModel)]="article.title" name="title" />
+            </div>
+            <div class="mb-3">
+                <label for="description">Description de l'article</label>
+                <input type="text" class="form-control" id="description" [(ngModel)]="article.description" name="description" />
+            </div>
+            <div class="mb-3">
+                <label for="image">Image de couverture</label>
+                <input type="text" class="form-control" id="image" [(ngModel)]="article.image" name="image" /> 
+            </div>
+            <div class="mb-3">
+                <label for="content">Contenu de l'article</label>
+            <textarea class="form-control" id="content" [(ngModel)]="article.content" required name="content"></textarea>
+            </div>
+            <button (click)="saveArticle()" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+    <div *ngIf="submitted">
+        <h4>L'article a été enregistré!</h4>
+        <button (click)="newArticle()" class="btn btn-success">Ajouter</button>
+    </div>
+</div>
+<br /><br />
