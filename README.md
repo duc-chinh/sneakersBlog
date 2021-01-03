@@ -11,3 +11,7 @@ Pour exécuter l'application, lancer 2 terminaux:
   - Terminal 2:
       * cd [chemin]/blogApp-srv
       * node server.js
+
+Vous pouvez créer un compte, mais il y en a un déjà créé:
+  - Login: admin
+  - Mot de passe: admin
