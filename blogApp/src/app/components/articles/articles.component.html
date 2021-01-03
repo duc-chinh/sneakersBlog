@@ -1,0 +1,27 @@
+<div class="list row">
+    <div>
+        <h1>Articles</h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Titre</th>
+                <th scope="col">Description</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let article of articles; let i = index" [class.active]="i == currentIndex" (click)="setActiveArticle(article, i)">
+                <th scope="row">{{ article.title }}</th>
+                <td>{{ article.description }}</td>
+                <td>{{ article.published ? "Publié" : "Brouillon" }}</td>
+                <td>
+                    <a *ngIf="authService.connectedUser" routerLink="/articles/{{ article.id }}">
+                        Modifier
+                    </a>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<div *ngIf="!authService.connectedUser">
+    <header>
+        <img src="{{ currentArticle.image }}" width="100%" height="225" class="center responsive" />
+        <br />
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <div>
+                <h1>{{ currentArticle.title }}</h1>
+                <h2>{{ currentArticle.description }}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+    </header>
+    
+    <article>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <p style="line-height: 32px;">{{ currentArticle.content }}</p>
+            </div>
+          </div>
+        </div>
+    </article>
+</div>
+
+<div *ngIf="authService.connectedUser">
+    <div *ngIf="currentArticle.id" class="edit-form">
+        <h1>Modification de l'article</h1>
+        <form>
+            <div class="form-group">
+                <label for="title">Titre</label>
+                <input type="text" class="form-control" id="title" [(ngModel)]="currentArticle.title" name="title" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" [(ngModel)]="currentArticle.description" name="description" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="image">Image de couverture</label>
+                <input type="text" class="form-control" id="image" [(ngModel)]="currentArticle.image" name="image" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="content">Contenu de l'article</label>
+                <textarea class="form-control" id="content" [(ngModel)]="currentArticle.content" name="content"></textarea>
+            </div>
+            <br />
+            <div class="form-group">
+                <label><strong>Statut:</strong></label>
+                {{ currentArticle.published ? "Publié" : "Brouillon" }}
+            </div>
+            <br />
+        </form>
+
+        <button class="btn btn-warning btn-sm" *ngIf="currentArticle.published" (click)="updatePublished(false)">
+            Déplacer vers les brouillons
+        </button>
+        <button class="btn btn-success btn-sm" *ngIf="!currentArticle.published" (click)="updatePublished(true)">
+            Publier
+        </button>
+
+        <button class="btn btn-primary btn-sm" type="submit" (click)="updateArticle()">
+            Editer
+        </button>
+
+        <button class="btn btn-danger btn-sm" (click)="deleteArticle()">
+            Supprimer
+        </button>
+        <br /><br />
+    </div>
+
+    <div *ngIf="!currentArticle.id">
+        <br />
+        <p>Impossible d'accéder à cet article...</p>
+    </div>
+</div>
